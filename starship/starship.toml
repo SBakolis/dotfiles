@@ -1,0 +1,210 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Use custom purple palette
+palette = "my_purple_dark"
+
+# --- Prompt format using palette colors ---
+format = """
+[](primary)\
+$os\
+$username\
+[](bg:secondary fg:primary)\
+$directory\
+[](bg:tertiary fg:secondary)\
+$git_branch\
+$git_status\
+[](bg:lang_bg fg:tertiary)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](bg:conda_bg fg:lang_bg)\
+$conda\
+[](bg:time_bg fg:conda_bg)\
+$time\
+[ ](fg:time_bg)\
+$cmd_duration\
+$line_break\
+$character"""
+
+# --- OS ---
+[os]
+disabled = false
+style = "bg:primary fg:text"
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = ""
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+EndeavourOS = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+# --- Username ---
+[username]
+show_always = true
+style_user = "bg:primary fg:text"
+style_root = "bg:primary fg:text"
+format = '[ $user]($style)'
+
+# --- Directory ---
+[directory]
+style = "bg:secondary fg:text"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+# --- Git ---
+[git_branch]
+symbol = ""
+style = "bg:tertiary"
+format = '[[ $symbol $branch ](fg:secondary bg:tertiary)]($style)'
+
+[git_status]
+style = "bg:tertiary"
+format = '[[($all_status$ahead_behind )](fg:secondary bg:tertiary)]($style)'
+
+# --- Languages ---
+[c]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol( $version) ](fg:secondary bg:lang_bg)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol( $version) ](fg:secondary bg:lang_bg)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol( $version) ](fg:secondary bg:lang_bg)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol( $version) ](fg:secondary bg:lang_bg)]($style)'
+
+[php]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol( $version) ](fg:secondary bg:lang_bg)]($style)'
+
+[java]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol( $version) ](fg:secondary bg:lang_bg)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol( $version) ](fg:secondary bg:lang_bg)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol( $version) ](fg:secondary bg:lang_bg)]($style)'
+
+[python]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol ($version)${virtualenv} ](fg:secondary bg:lang_bg)]($style)'
+pyenv_version_name = true
+detect_extensions = ['py']
+detect_files = ['requirements.txt', 'pyproject.toml', 'setup.py', 'Pipfile', '.python-version']
+detect_folders = ['.venv', 'venv']
+disabled = false
+
+# --- Docker ---
+[docker_context]
+symbol = ""
+style = "bg:conda_bg"
+format = '[[ $symbol( $context) ](fg:time_bg bg:conda_bg)]($style)'
+
+# --- Conda ---
+[conda]
+symbol = ""
+style = "fg:conda_fg bg:conda_bg"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+# --- Time ---
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:time_bg"
+format = '[[  $time ](fg:text bg:time_bg)]($style)'
+
+[line_break]
+disabled = true
+
+# --- Character ---
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:highlight)'
+error_symbol = '[❯](bold fg:error)'
+vimcmd_symbol = '[❮](bold fg:subtext1)'
+vimcmd_replace_symbol = '[❮](bold fg:secondary)'
+vimcmd_visual_symbol = '[❮](bold fg:subtext1)'
+
+# --- Command Duration ---
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "bg:time_bg fg:text"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[palettes.my_purple]
+primary = "#a084d6"
+secondary = "#9b80e6"
+tertiary = "#6c5a9f"
+lang_bg = "#5f3f7f"
+conda_bg = "#3e2f5b"
+conda_fg = "#c6b9e1"
+time_bg = "#b799e3"
+highlight = "#f5a97f"
+error = "#ed8796"
+text = "#e3e5e5"
+subtext1 = "#c6b9e1"
+
+# --- Darker palette ---
+[palettes.my_purple_dark]
+primary = "#8e6fc2"
+secondary = "#876dc2"
+tertiary = "#5c4f88"
+lang_bg = "#4c3a6a"
+conda_bg = "#362743"
+conda_fg = "#aa9bcf"
+time_bg = "#9b81c4"
+highlight = "#d8946e"
+error = "#c66d78"
+text = "#e3e5e5"
+subtext1 = "#a89acf"
